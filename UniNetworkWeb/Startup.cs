@@ -1,11 +1,14 @@
-using UniNetworkWeb.Data;
-using UniNetworkWeb.Models;
-using Finbuckle.MultiTenant;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Routing;
+using UniNetworkWeb.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.AspNetCore.Routing;
+ using System.Collections.Generic;
+using UniNetworkWeb.Infrastructure;
+using Finbuckle.MultiTenant;
 
 namespace UniNetworkWeb
 {
@@ -20,15 +23,34 @@ namespace UniNetworkWeb
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            // Register the db context, but do not specify a provider/connection
+            // string since these vary by tenant.
+            services.AddDbContext<ApplicationDbContext>();
 
-            services.AddMultiTenant<TenantInfo>().
-                WithConfigurationStore().
-                WithRouteStrategy();
+            services.AddDefaultIdentity<IdentityUser>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            // Register the db context, but do not specify a provider/connection string since
-            // these vary by tenant.
-            services.AddDbContext<ToDoDbContext>();
+            //services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddRazorPages(options =>
+            {
+                // Since we are using the route multitenant strategy we must add the
+                // route parameter to the Pages conventions used by Identity.
+                options.Conventions.AddAreaFolderRouteModelConvention("Identity", "/Account", model =>
+                {
+                    foreach (var selector in model.Selectors)
+                    {
+                        selector.AttributeRouteModel.Template =
+                            AttributeRouteModel.CombineTemplates("{__tenant__}", selector.AttributeRouteModel.Template);
+                    }
+                });
+            });
+
+            services.DecorateService<LinkGenerator, AmbientValueLinkGenerator>(new List<string> { "__tenant__" });
+
+            services.AddMultiTenant<SampleTenantInfo>()
+                    .WithRouteStrategy()
+                    .WithConfigurationStore()
+                    .WithPerTenantAuthentication();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -36,54 +58,24 @@ namespace UniNetworkWeb
             if (env.EnvironmentName == "Development")
             {
                 app.UseDeveloperExceptionPage();
+                app.UseStatusCodePages();
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseMultiTenant();
-
+            //app.UseAuthentication();
+            //app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("default", "{__tenant__=}/{controller=Home}/{action=Index}");
+                endpoints.MapRazorPages();
             });
 
-            SetupDb();
+
         }
 
-        private void SetupDb()
-        {
-            var ti = new TenantInfo { Id = "finbuckle", ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Database=TodoList" };
-            using (var db = new ToDoDbContext(ti))
-            {
-                db.Database.EnsureDeleted();
-                db.Database.EnsureCreated();
-                db.ToDoItems.Add(new ToDoItem { Title = "Call Lawyer ", Completed = false });
-                db.ToDoItems.Add(new ToDoItem { Title = "File Papers", Completed = false });
-                db.ToDoItems.Add(new ToDoItem { Title = "Send Invoices", Completed = true });
-                db.SaveChanges();
-            }
-
-            ti = new TenantInfo { Id = "megacorp", ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Database=TodoList" };
-            using (var db = new ToDoDbContext(ti))
-            {
-                db.Database.EnsureCreated();
-                db.ToDoItems.Add(new ToDoItem { Title = "Send Invoices", Completed = true });
-                db.ToDoItems.Add(new ToDoItem { Title = "Construct Additional Pylons", Completed = true });
-                db.ToDoItems.Add(new ToDoItem { Title = "Call Insurance Company", Completed = false });
-                db.SaveChanges();
-            }
-
-            ti = new TenantInfo { Id = "initech", ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Database=Initech_ToDoList.db" };
-            using (var db = new ToDoDbContext(ti))
-            {
-                db.Database.EnsureDeleted();
-                db.Database.EnsureCreated();
-                db.ToDoItems.Add(new ToDoItem { Title = "Send Invoices", Completed = false });
-                db.ToDoItems.Add(new ToDoItem { Title = "Pay Salaries", Completed = true });
-                db.ToDoItems.Add(new ToDoItem { Title = "Write Memo", Completed = false });
-                db.SaveChanges();
-            }
-        }
 
         private void ConfigRoutes(IRouteBuilder routes)
         {
