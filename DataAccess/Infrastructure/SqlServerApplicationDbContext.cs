@@ -49,10 +49,12 @@ namespace DataAccess
         public DbSet<MenuArea> MenuArea { get; set; }
 
         public DbSet<MenuSection> MenuSection { get; set; }
-
+        */
         public DbSet<Title> Title { get; set; }
 
         public DbSet<Gender> Gender { get; set; }
+        public DbSet<IDType> IDType { get; set; }
+        /*
 
         public DbSet<Person> Person { get; set; }
 
@@ -60,7 +62,7 @@ namespace DataAccess
 
         public DbSet<Language> Language { get; set; }
 
-        public DbSet<IDType> IDType { get; set; }
+
 
         public DbSet<EmploymentStatus> EmploymentStatus { get; set; }
 
