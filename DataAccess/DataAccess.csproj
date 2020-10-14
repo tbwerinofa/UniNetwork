@@ -1,0 +1,110 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="EntitySetMapping\**" />
+    <Compile Remove="EntitySet\Accolade\**" />
+    <Compile Remove="EntitySet\Activity\**" />
+    <Compile Remove="EntitySet\Calendars\**" />
+    <Compile Remove="EntitySet\Core\**" />
+    <Compile Remove="EntitySet\Emailer\**" />
+    <Compile Remove="EntitySet\Finance\**" />
+    <Compile Remove="EntitySet\Store\**" />
+    <EmbeddedResource Remove="EntitySetMapping\**" />
+    <EmbeddedResource Remove="EntitySet\Accolade\**" />
+    <EmbeddedResource Remove="EntitySet\Activity\**" />
+    <EmbeddedResource Remove="EntitySet\Calendars\**" />
+    <EmbeddedResource Remove="EntitySet\Core\**" />
+    <EmbeddedResource Remove="EntitySet\Emailer\**" />
+    <EmbeddedResource Remove="EntitySet\Finance\**" />
+    <EmbeddedResource Remove="EntitySet\Store\**" />
+    <None Remove="EntitySetMapping\**" />
+    <None Remove="EntitySet\Accolade\**" />
+    <None Remove="EntitySet\Activity\**" />
+    <None Remove="EntitySet\Calendars\**" />
+    <None Remove="EntitySet\Core\**" />
+    <None Remove="EntitySet\Emailer\**" />
+    <None Remove="EntitySet\Finance\**" />
+    <None Remove="EntitySet\Store\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="EntitySet\Meta\CalendarMonth.cs" />
+    <Compile Remove="EntitySet\Meta\Cycle.cs" />
+    <Compile Remove="EntitySet\Meta\Document.cs" />
+    <Compile Remove="EntitySet\Meta\DocumentType.cs" />
+    <Compile Remove="EntitySet\Meta\EmploymentStatus.cs" />
+    <Compile Remove="EntitySet\Meta\Ethnic.cs" />
+    <Compile Remove="EntitySet\Meta\EventType.cs" />
+    <Compile Remove="EntitySet\Meta\FinYear.cs" />
+    <Compile Remove="EntitySet\Meta\FinYearCycle.cs" />
+    <Compile Remove="EntitySet\Meta\Frequency.cs" />
+    <Compile Remove="EntitySet\Meta\IncidentGroup.cs" />
+    <Compile Remove="EntitySet\Meta\IncidentType.cs" />
+    <Compile Remove="EntitySet\Meta\Language.cs" />
+    <Compile Remove="EntitySet\Meta\MaritalStatus.cs" />
+    <Compile Remove="EntitySet\Meta\Menu.cs" />
+    <Compile Remove="EntitySet\Meta\MenuArea.cs" />
+    <Compile Remove="EntitySet\Meta\MenuGroup.cs" />
+    <Compile Remove="EntitySet\Meta\MenuSection.cs" />
+    <Compile Remove="EntitySet\Meta\Person.cs" />
+    <Compile Remove="EntitySet\Meta\SystemDocument.cs" />
+    <Compile Remove="EntitySet\Meta\Venue.cs" />
+    <Compile Remove="EntitySet\Security\ApplicationRole.cs" />
+    <Compile Remove="EntitySet\Security\ApplicationRoleMenu.cs" />
+    <Compile Remove="EntitySet\Security\ApplicationRoleMessageTemplate.cs" />
+    <Compile Remove="EntitySet\Security\AppTenant.cs" />
+    <Compile Remove="EntitySet\Security\Control.cs" />
+    <Compile Remove="EntitySet\Security\UserRegion.cs" />
+    <Compile Remove="EntitySet\Worker\Employee.cs" />
+    <Compile Remove="EntitySet\Worker\Member.cs" />
+    <Compile Remove="EntitySet\Worker\MemberLicense.cs" />
+    <Compile Remove="EntitySet\Worker\MemberMapping.cs" />
+    <Compile Remove="EntitySet\Worker\MemberPosition.cs" />
+    <Compile Remove="Migrations\20201014081727_GIS.cs" />
+    <Compile Remove="Migrations\20201014081727_GIS.Designer.cs" />
+    <Compile Remove="Migrations\20201014082339_GIS.cs" />
+    <Compile Remove="Migrations\20201014082339_GIS.Designer.cs" />
+    <Compile Remove="Migrations\20201014082841_gis.cs" />
+    <Compile Remove="Migrations\20201014082841_gis.Designer.cs" />
+    <Compile Remove="Migrations\20201014083303_gis.cs" />
+    <Compile Remove="Migrations\20201014083303_gis.Designer.cs" />
+    <Compile Remove="Migrations\20201014085246_GIS.cs" />
+    <Compile Remove="Migrations\20201014085246_GIS.Designer.cs" />
+    <Compile Remove="Migrations\20201014085541_GIS.cs" />
+    <Compile Remove="Migrations\20201014085541_GIS.Designer.cs" />
+    <Compile Remove="Migrations\20201014085907_gis.cs" />
+    <Compile Remove="Migrations\20201014085907_gis.Designer.cs" />
+    <Compile Remove="Migrations\20201014090038_gis.cs" />
+    <Compile Remove="Migrations\20201014090038_gis.Designer.cs" />
+    <Compile Remove="Migrations\20201014090408_gis.cs" />
+    <Compile Remove="Migrations\20201014090408_gis.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="EntitySetMapping\GIS\GlobalRegionMap.cs" />
+    <Compile Include="EntitySetMapping\GIS\ProvinceMap.cs" />
+    <Compile Include="EntitySetMapping\GIS\TownMap.cs" />
+    <Compile Include="EntitySetMapping\GIS\CountryMap.cs" />
+    <Compile Include="EntitySetMapping\GIS\CityMap.cs" />
+    <Compile Include="EntitySetMapping\GIS\SuburbMap.cs" />
+    <Compile Include="EntitySetMapping\Meta\GenderMap.cs" />
+    <Compile Include="EntitySetMapping\Meta\IDTypeMap.cs" />
+    <Compile Include="EntitySetMapping\Meta\TitleMap.cs" />
+    <Compile Include="EntitySetMapping\Worker\MemberStagingMap.cs" />
+    <Compile Include="EntitySet\Core\Address.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Finbuckle.MultiTenant.AspNetCore" Version="6.0.0" />
+    <PackageReference Include="Finbuckle.MultiTenant.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+  </ItemGroup>
+
+</Project>

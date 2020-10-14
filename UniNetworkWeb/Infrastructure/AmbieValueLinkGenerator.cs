@@ -43,11 +43,11 @@ namespace UniNetworkWeb.Infrastructure
 
         public override string GetPathByAddress<TAddress>(HttpContext httpContext, TAddress address, RouteValueDictionary values, RouteValueDictionary ambientValues = null, PathString? pathBase = null, FragmentString fragment = default, LinkOptions options = null)
         {
-            var promotedValues = PromoteAmbientValues(values, ambientValues);
+            var (newValues, newAmbientValues) = PromoteAmbientValues(values, ambientValues);
             return _inner.GetPathByAddress(httpContext,
                                            address,
-                                           promotedValues.newValues,
-                                           promotedValues.newAmbientValues,
+                                           newValues,
+                                           newAmbientValues,
                                            pathBase,
                                            fragment,
                                            options);
@@ -65,11 +65,11 @@ namespace UniNetworkWeb.Infrastructure
 
         public override string GetUriByAddress<TAddress>(HttpContext httpContext, TAddress address, RouteValueDictionary values, RouteValueDictionary ambientValues = null, string scheme = null, HostString? host = null, PathString? pathBase = null, FragmentString fragment = default, LinkOptions options = null)
         {
-            var promotedValues = PromoteAmbientValues(values, ambientValues);
+            var (newValues, newAmbientValues) = PromoteAmbientValues(values, ambientValues);
             return _inner.GetUriByAddress(httpContext,
                                           address,
-                                          promotedValues.newValues,
-                                          promotedValues.newAmbientValues,
+                                          newValues,
+                                          newAmbientValues,
                                           scheme,
                                           host,
                                           pathBase,

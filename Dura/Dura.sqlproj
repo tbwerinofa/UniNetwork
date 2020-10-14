@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Dura</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{11ec76cf-2529-4e88-bc29-11e08f118db5}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Dura</RootNamespace>
+    <AssemblyName>Dura</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Latin1_General_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="accolade\" />
+    <Folder Include="accolade\Tables\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="import\" />
+    <Folder Include="import\Tables\" />
+    <Folder Include="activity\" />
+    <Folder Include="activity\Tables\" />
+    <Folder Include="meta\" />
+    <Folder Include="meta\Tables\" />
+    <Folder Include="calendar\" />
+    <Folder Include="calendar\Tables\" />
+    <Folder Include="emailer\" />
+    <Folder Include="emailer\Tables\" />
+    <Folder Include="security\" />
+    <Folder Include="security\Tables\" />
+    <Folder Include="finance\" />
+    <Folder Include="finance\Tables\" />
+    <Folder Include="store\" />
+    <Folder Include="store\Tables\" />
+    <Folder Include="gis\" />
+    <Folder Include="gis\Tables\" />
+    <Folder Include="HangFire\" />
+    <Folder Include="HangFire\Tables\" />
+    <Folder Include="worker\" />
+    <Folder Include="worker\Tables\" />
+    <Folder Include="workflow\" />
+    <Folder Include="workflow\Tables\" />
+    <Folder Include="workflow\Views\" />
+    <Folder Include="accolade\Views\" />
+    <Folder Include="activity\Functions\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="accolade\Stored Procedures\" />
+    <Folder Include="activity\Stored Procedures\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="activity\User Defined Types\" />
+    <Folder Include="import\User Defined Types\" />
+    <Folder Include="worker\User Defined Types\" />
+    <Folder Include="dbo\User Defined Types\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="accolade\Tables\Award.sql" />
+    <Build Include="dbo\Tables\ApplicationRoleMessageTemplate.sql" />
+    <Build Include="import\Tables\ProcessLog.sql" />
+    <Build Include="import\Tables\DocumentError.sql" />
+    <Build Include="dbo\Tables\Article.sql" />
+    <Build Include="activity\Tables\RaceDistance.sql" />
+    <Build Include="meta\Tables\Affiliation.sql" />
+    <Build Include="dbo\Tables\ArticleDocument.sql" />
+    <Build Include="meta\Tables\MeasurementUnit.sql" />
+    <Build Include="activity\Tables\RaceOrganisation.sql" />
+    <Build Include="meta\Tables\MeasurementUnitGroup.sql" />
+    <Build Include="dbo\Tables\Contact.sql" />
+    <Build Include="activity\Tables\MeasurementUnit.sql" />
+    <Build Include="meta\Tables\MemberStatus.sql" />
+    <Build Include="dbo\Tables\DocumentType.sql" />
+    <Build Include="meta\Tables\IDType.sql" />
+    <Build Include="activity\Tables\AgeGroup.sql" />
+    <Build Include="dbo\Tables\Moderator.sql" />
+    <Build Include="meta\Tables\Gender.sql" />
+    <Build Include="dbo\Tables\Newsletter.sql" />
+    <Build Include="meta\Tables\FinYearCycle.sql" />
+    <Build Include="activity\Tables\RunningCategory.sql" />
+    <Build Include="dbo\Tables\Organisation.sql" />
+    <Build Include="activity\Tables\Distance.sql" />
+    <Build Include="meta\Tables\FinYear.sql" />
+    <Build Include="dbo\Tables\OrganisationType.sql" />
+    <Build Include="meta\Tables\Ethnic.sql" />
+    <Build Include="dbo\Tables\StateMachineRolePermission.sql" />
+    <Build Include="meta\Tables\EmploymentStatus.sql" />
+    <Build Include="activity\Tables\RaceType.sql" />
+    <Build Include="dbo\Tables\UserRegion.sql" />
+    <Build Include="meta\Tables\Venue.sql" />
+    <Build Include="activity\Tables\Race.sql" />
+    <Build Include="meta\Tables\Document.sql" />
+    <Build Include="activity\Tables\TimeTrialDistance.sql" />
+    <Build Include="meta\Tables\Cycle.sql" />
+    <Build Include="activity\Tables\TimeTrial.sql" />
+    <Build Include="meta\Tables\EventType.sql" />
+    <Build Include="activity\Tables\Discpline.sql" />
+    <Build Include="activity\Tables\RaceDefinition.sql" />
+    <Build Include="meta\Tables\CalendarMonth.sql" />
+    <Build Include="meta\Tables\ValidationErrorType.sql" />
+    <Build Include="activity\Tables\TrainingPlanMember.sql" />
+    <Build Include="meta\Tables\Title.sql" />
+    <Build Include="activity\Tables\TrainingPlanDistance.sql" />
+    <Build Include="meta\Tables\ShopStewardSettingAudit.sql" />
+    <Build Include="meta\Tables\ShopStewardSetting.sql" />
+    <Build Include="activity\Tables\TrainingPlan.sql" />
+    <Build Include="meta\Tables\PlantLevel.sql" />
+    <Build Include="activity\Tables\RaceResultImport.sql" />
+    <Build Include="meta\Tables\MenuSection.sql" />
+    <Build Include="meta\Tables\MenuGroup.sql" />
+    <Build Include="activity\Tables\TrainingPlanRaceDefinition.sql" />
+    <Build Include="dbo\Tables\__EFMigrationsHistory.sql" />
+    <Build Include="activity\Tables\RaceResult.sql" />
+    <Build Include="meta\Tables\MenuArea.sql" />
+    <Build Include="calendar\Tables\Calendar.sql" />
+    <Build Include="dbo\Tables\AspNetRoles.sql" />
+    <Build Include="meta\Tables\Menu.sql" />
+    <Build Include="activity\Tables\TimeTrialResult.sql" />
+    <Build Include="meta\Tables\Frequency.sql" />
+    <Build Include="calendar\Tables\Event.sql" />
+    <Build Include="dbo\Tables\AspNetRoleClaims.sql" />
+    <Build Include="dbo\Tables\Person.sql" />
+    <Build Include="emailer\Tables\QueuedEmail.sql" />
+    <Build Include="meta\Tables\SystemDocument.sql" />
+    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
+    <Build Include="emailer\Tables\EmailAccount.sql" />
+    <Build Include="security\Tables\Control.sql" />
+    <Build Include="emailer\Tables\MessageTemplate.sql" />
+    <Build Include="finance\Tables\QuoteStatus.sql" />
+    <Build Include="store\Tables\OrderDetail.sql" />
+    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
+    <Build Include="store\Tables\Supplier.sql" />
+    <Build Include="finance\Tables\QuoteDetail.sql" />
+    <Build Include="dbo\Tables\AspNetUserTokens.sql" />
+    <Build Include="store\Tables\StockAlert.sql" />
+    <Build Include="finance\Tables\Quote.sql" />
+    <Build Include="store\Tables\SortCategory.sql" />
+    <Build Include="finance\Tables\SubscriptionTypeRuleAudit.sql" />
+    <Build Include="finance\Tables\SubscriptionTypeRule.sql" />
+    <Build Include="store\Tables\Size.sql" />
+    <Build Include="finance\Tables\SubscriptionTypeAttribute.sql" />
+    <Build Include="store\Tables\Item.sql" />
+    <Build Include="finance\Tables\SubscriptionType.sql" />
+    <Build Include="store\Tables\FeaturedImage.sql" />
+    <Build Include="finance\Tables\SubscriptionHistory.sql" />
+    <Build Include="store\Tables\FeaturedCategory.sql" />
+    <Build Include="finance\Tables\Subscription.sql" />
+    <Build Include="store\Tables\ProductSize.sql" />
+    <Build Include="finance\Tables\PayFastNotify.sql" />
+    <Build Include="store\Tables\ProductImage.sql" />
+    <Build Include="gis\Tables\GlobalRegion.sql" />
+    <Build Include="gis\Tables\Country.sql" />
+    <Build Include="store\Tables\ProductCategory.sql" />
+    <Build Include="gis\Tables\City.sql" />
+    <Build Include="store\Tables\Product.sql" />
+    <Build Include="gis\Tables\Province.sql" />
+    <Build Include="store\Tables\Color.sql" />
+    <Build Include="gis\Tables\Town.sql" />
+    <Build Include="store\Tables\Cart.sql" />
+    <Build Include="gis\Tables\Suburb.sql" />
+    <Build Include="store\Tables\BannerImage.sql" />
+    <Build Include="HangFire\Tables\State.sql" />
+    <Build Include="worker\Tables\MemberStaging.sql" />
+    <Build Include="HangFire\Tables\Set.sql" />
+    <Build Include="worker\Tables\Member.sql" />
+    <Build Include="HangFire\Tables\Server.sql" />
+    <Build Include="worker\Tables\MemberLicense.sql" />
+    <Build Include="HangFire\Tables\Schema.sql" />
+    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
+    <Build Include="HangFire\Tables\List.sql" />
+    <Build Include="worker\Tables\MemberMapping.sql" />
+    <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="HangFire\Tables\JobQueue.sql" />
+    <Build Include="accolade\Tables\Winner.sql" />
+    <Build Include="workflow\Tables\WorkFlowStatus.sql" />
+    <Build Include="HangFire\Tables\JobParameter.sql" />
+    <Build Include="accolade\Tables\Trophy.sql" />
+    <Build Include="workflow\Tables\WorkFlowType.sql" />
+    <Build Include="HangFire\Tables\Job.sql" />
+    <Build Include="workflow\Tables\StateMachine.sql" />
+    <Build Include="HangFire\Tables\Hash.sql" />
+    <Build Include="accolade\Tables\AwardTrophyAudit.sql" />
+    <Build Include="dbo\Tables\Address.sql" />
+    <Build Include="HangFire\Tables\Counter.sql" />
+    <Build Include="accolade\Tables\AwardTrophy.sql" />
+    <Build Include="dbo\Tables\ApplicationRoleMenu.sql" />
+    <Build Include="HangFire\Tables\AggregatedCounter.sql" />
+    <Build Include="workflow\Views\vwWorkFlow.sql" />
+    <Build Include="accolade\Views\vwTrophy.sql" />
+    <Build Include="activity\Functions\CalculateAveragePace.sql" />
+    <Build Include="activity\Functions\CalculateAveragePace_TimeTrial.sql" />
+    <Build Include="dbo\Functions\CalculateAgeGroup.sql" />
+    <Build Include="dbo\Functions\CalculateAmountExVat.sql" />
+    <Build Include="dbo\Functions\CalculateVatAmount.sql" />
+    <Build Include="dbo\Functions\fnSys_LogProcAction.sql" />
+    <Build Include="dbo\Functions\Ufn_CamelCase.sql" />
+    <Build Include="accolade\Stored Procedures\web_GetTrophyWinners.sql" />
+    <Build Include="activity\Stored Procedures\usp_RaceDefinition_MergeDataUsingTableUDT.sql" />
+    <Build Include="activity\Stored Procedures\usp_RaceResult_MergeDataUsingTableUDT.sql" />
+    <Build Include="activity\Stored Procedures\usp_RaceResult_TransformDataUsingTableUDT.sql" />
+    <Build Include="activity\Stored Procedures\usp_RaceDistance_MergeDataUsingTableUDT.sql" />
+    <Build Include="activity\Stored Procedures\usp_RaceDistance_TransformDataUsingTableUDT.sql" />
+    <Build Include="activity\Stored Procedures\usp_Race_MergeDataUsingTableUDT.sql" />
+    <Build Include="activity\Stored Procedures\usp_Race_TransformDataUsingTableUDT.sql" />
+    <Build Include="dbo\Stored Procedures\usp_Employee_MergeDataUsingTableUDT.sql" />
+    <Build Include="dbo\Stored Procedures\usp_Import_AddProcessLog.sql" />
+    <Build Include="dbo\Stored Procedures\usp_Person_MergeDataUsingTableUDT.sql" />
+    <Build Include="activity\Stored Procedures\usp_RaceDefinition_TransformDataUsingTableUDT.sql" />
+    <Build Include="activity\Stored Procedures\usp_ProcessRaceResultImportStaging.sql" />
+    <Build Include="activity\User Defined Types\ut_RaceDefinition.sql" />
+    <Build Include="activity\User Defined Types\ut_RaceResult.sql" />
+    <Build Include="activity\User Defined Types\ut_Distance.sql" />
+    <Build Include="activity\User Defined Types\ut_Race.sql" />
+    <Build Include="activity\User Defined Types\ut_RaceDistance.sql" />
+    <Build Include="activity\User Defined Types\ut_RaceResultImport.sql" />
+    <Build Include="import\User Defined Types\ut_RemittanceStagingError.sql" />
+    <Build Include="worker\User Defined Types\ut_RemittanceStaging.sql" />
+    <Build Include="dbo\User Defined Types\ut_Basic.sql" />
+    <Build Include="dbo\User Defined Types\ut_Employee.sql" />
+    <Build Include="dbo\User Defined Types\ut_Person.sql" />
+    <Build Include="dbo\User Defined Types\ut_Remittance.sql" />
+    <Build Include="security\accolade.sql" />
+    <Build Include="security\activity.sql" />
+    <Build Include="security\calendar.sql" />
+    <Build Include="security\emailer.sql" />
+    <Build Include="security\finance.sql" />
+    <Build Include="security\gis.sql" />
+    <Build Include="security\HangFire.sql" />
+    <Build Include="security\import.sql" />
+    <Build Include="security\meta.sql" />
+    <Build Include="security\security.sql" />
+    <Build Include="security\store.sql" />
+    <Build Include="security\training.sql" />
+    <Build Include="security\worker.sql" />
+    <Build Include="security\workflow.sql" />
+  </ItemGroup>
+</Project>

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
-using UniNetworkWeb.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
@@ -9,6 +8,7 @@ using Microsoft.AspNetCore.Routing;
  using System.Collections.Generic;
 using UniNetworkWeb.Infrastructure;
 using Finbuckle.MultiTenant;
+using DataAccess;
 
 namespace UniNetworkWeb
 {
@@ -25,10 +25,11 @@ namespace UniNetworkWeb
         {
             // Register the db context, but do not specify a provider/connection
             // string since these vary by tenant.
-            services.AddDbContext<ApplicationDbContext>();
+            services.AddDbContext<SqlServerApplicationDbContext>();
+
 
             services.AddDefaultIdentity<IdentityUser>()
-                    .AddEntityFrameworkStores<ApplicationDbContext>();
+                    .AddEntityFrameworkStores<SqlServerApplicationDbContext>();
 
             //services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages(options =>
@@ -65,8 +66,8 @@ namespace UniNetworkWeb
             app.UseStaticFiles();
             app.UseRouting();
             app.UseMultiTenant();
-            //app.UseAuthentication();
-            //app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("default", "{__tenant__=}/{controller=Home}/{action=Index}");
@@ -76,10 +77,5 @@ namespace UniNetworkWeb
 
         }
 
-
-        private void ConfigRoutes(IRouteBuilder routes)
-        {
-            routes.MapRoute("Defaut", "{__tenant__=}/{controller=Home}/{action=Index}");
-        }
     }
 }
