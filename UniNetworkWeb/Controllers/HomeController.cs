@@ -8,6 +8,10 @@ namespace UniNetworkWeb.Controllers
     {
         public IActionResult Index()
         {
+
+            if (User.Identity.IsAuthenticated)
+                 return RedirectToAction("Index","Profile");
+
             var ti = HttpContext.GetMultiTenantContext<SampleTenantInfo>()?.TenantInfo;
             return View(ti);
         }

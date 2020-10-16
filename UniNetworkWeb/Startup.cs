@@ -71,9 +71,16 @@ namespace UniNetworkWeb
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("default", "{__tenant__=}/{controller=Home}/{action=Index}");
+                endpoints.MapControllerRoute("areas", "{__tenant__=}/{controller=Admin}/{action=Index}");
+
+                endpoints.MapControllerRoute(
+                name: "areas",
+                pattern: "{area:admin}/{__tenant__=}/{controller=Home}/{action=Index}/{id?}");
+
+
+
                 endpoints.MapRazorPages();
             });
-
 
         }
 

@@ -1,0 +1,82 @@
+﻿@model ProfileViewModel
+
+
+<fieldset class="npo-capture-section qsncategorypanel 1" data-sectionordinal="1" id="fst-step-1">
+    <legend></legend>
+
+    <div id="step-1" data-currentstep="1" class="registerstep">
+        <div id="regstepElement_1">
+
+
+            <form area="PartialCare" action="/Admin/Project/Manage" class="form-horizontal qsnattributepanel" id="form-general" method="post" role="form" novalidate>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+                <input type="hidden" id="Ordinal" name="Ordinal" value="1" />
+                <div class="card card-info">
+                    <div class="card-header form-heading">
+                        <h4 class="card-title">
+                            Personal Information
+                        </h4>
+
+                    </div>
+                    <div class="card-body">
+
+                        @*@Html.Partial("_ValidationSummary")*@
+
+                        <div class="row">
+
+                            <div class="col-6">
+
+
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.FirstName, htmlAttributes: ModelConstant.LabelRequired)
+                                    <div class="col-8">
+                                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = ModelConstant.FormControlInp })
+                                        @Html.ValidationMessageFor(model => model.FirstName)
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.Surname, htmlAttributes: ModelConstant.LabelRequired)
+                                    <div class="col-8">
+                                        @Html.EditorFor(model => model.Surname, new { htmlAttributes = ModelConstant.FormControlInp })
+                                        @Html.ValidationMessageFor(model => model.Surname)
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.CountryId, htmlAttributes: ModelConstant.LabelRequired)
+                                    <div class="col-8">
+                                        @Html.DropDownListFor(m => m.CountryId, Model.Countries, htmlAttributes: new { @class = "form-control input-sm" })
+                                        @Html.ValidationMessageFor(model => model.CountryId)
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.CellPhone, htmlAttributes: ModelConstant.LabelRequired)
+                                    <div class="col-8">
+                                        @Html.EditorFor(model => model.CellPhone, new { htmlAttributes = ModelConstant.FormControlInp })
+                                        @Html.ValidationMessageFor(model => model.CellPhone)
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <input id="btn-save-general" class="btn btn-primary btn-navigation" type="button" data-navigation="finish" value="Save and Continue" style="margin-right: 5px;">
+                </div> <!--Navigation buttons-->
+
+            </form>
+
+
+        </div>
+    </div>
+</fieldset><!--fieldset general info-->
+
+

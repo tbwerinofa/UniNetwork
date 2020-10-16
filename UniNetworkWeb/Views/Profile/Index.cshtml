@@ -1,0 +1,21 @@
+﻿@model ProfileViewModel
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+
+<div class="row">
+
+    <div class="col-3">
+
+    <partial name="_SideBar" />
+    </div> <!--div side bar-->
+
+    <div class="col-9">
+
+        <partial name="_General" />
+        <partial name="_Business"/>
+    </div><!--div main section-->
+
+</div><!--div row-->
